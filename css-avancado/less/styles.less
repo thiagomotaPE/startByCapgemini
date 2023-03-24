@@ -1,0 +1,33 @@
+@cor: blue;
+@cor2: green;
+@cor3: #fff;
+@width:0.25;
+@tamanho: 23px;
+
+h1{
+    .cores('h1');
+}
+
+p{
+    width: percentage(@width);
+    .cores('p');
+    
+    strong{
+        background-color: @cor2 * 0.5;
+        color: @cor3;
+    }
+}
+
+.cores(@tag) {
+    color: if(iscolor(@cor), @cor, red);
+
+    & when (@tag = 'h1') {
+        text-shadow: 2px 1px 1px #7a7b7c;
+        font-size: @tamanho + 20px;
+    }
+
+    & when (@tag = 'p') {
+        background-color: lightgreen;
+        font-size: @tamanho + 27px;
+    }
+}
